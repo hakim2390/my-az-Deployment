@@ -56,3 +56,5 @@ stages:
             --dns-name-label hakim-demo-site \
             --ports 80 \
             --os-type Linux
+            --cpu 1 \
+            --memory 1
