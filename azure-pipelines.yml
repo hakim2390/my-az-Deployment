@@ -37,3 +37,21 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
+
+    - task: AzureCLI@2
+      displayName: Deploy to Azure Container Instances
+      inputs:
+        azureSubscription: 'Azure-Cloud-Link'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az container create \
+            --resource-group VisualStudioOnline-DBEDE2304E4945868A7D98F0F6BD3E02 \
+            --name my-live-container \
+            --image $(containerRegistry)/$(imageRepository):$(tag) \
+            --registry-login-server $(containerRegistry) \
+            --registry-username myregistry12345 \
+            --registry-password 72V6z0ZGjRmSEPlCTqk4JyvrW81MjSTumrZXxOtVC55IMTj3evRmJQQJ99CJAC1i4TkEqg7NAAACAZCRABnB \
+            --dns-name-label hakim-demo-site \
+            --ports 80
