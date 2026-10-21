@@ -55,3 +55,4 @@ stages:
             --registry-password 72V6z0ZGjRmSEPlCTqk4JyvrW81MjSTumrZXxOtVC55IMTj3evRmJQQJ99CJAC1i4TkEqg7NAAACAZCRABnB \
             --dns-name-label hakim-demo-site \
             --ports 80
+            --os-type Linux
